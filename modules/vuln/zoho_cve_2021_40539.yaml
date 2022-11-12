@@ -20,16 +20,13 @@ payloads:
   - library: http
     steps:
       - method: post
-        verify: false
         timeout: 3
-        cert: ""
-        stream: false
-        proxies: ""
         headers:
           User-Agent: "{user_agent}"
           Host: {target}
           Content-Type: application/x-www-form-urlencoded
         allow_redirects: false
+        ssl: false
         url:
           nettacker_fuzzer:
             input_format: "{{schema}}://{target}:{{ports}}/./RestAPI/LogonCustomization"

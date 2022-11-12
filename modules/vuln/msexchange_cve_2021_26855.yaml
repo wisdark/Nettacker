@@ -17,17 +17,14 @@ payloads:
   - library: http
     steps:
       - method: get
-        verify: false
         timeout: 3
-        cert: ""
-        stream: false
-        proxies: ""
         allow_redirects: false
         headers:
           User-Agent: "{user_agent}"
           Cookie:
             - "X-AnonResource=true; X-AnonResource-Backend=http://{target}/ecp/default.flt?~3;"
             - "X-AnonResource=true; X-AnonResource-Backend=https://{target}/ecp/default.flt?~3;"
+        ssl: false
         url:
           nettacker_fuzzer:
             input_format: "{{schema}}://{target}:{{ports}}/owa/auth/x.js"
