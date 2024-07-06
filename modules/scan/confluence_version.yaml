@@ -1,14 +1,16 @@
 info:
-  name: x_powered_by_vuln
-  author: OWASP Nettacker Team
+  name: confluence_version_scan
+  author: Jimmy Ly
   severity: 3
-  description:
+  description: Fetch Confluence version from target
   reference:
   profiles:
-    - vuln
-    - vulnerability
+    - scan
     - http
+    - backup
     - low_severity
+    - confluence
+    - atlassian
 
 payloads:
   - library: http
@@ -21,7 +23,7 @@ payloads:
         ssl: false
         url:
           nettacker_fuzzer:
-            input_format: "{{schema}}://{target}:{{ports}}/"
+            input_format: "{{schema}}://{target}:{{ports}}/dashboard.action"
             prefix: ""
             suffix: ""
             interceptors:
@@ -35,8 +37,7 @@ payloads:
         response:
           condition_type: or
           conditions:
-            headers:
-              x-powered-by:
-                regex: "\\S+"
-                reverse: false
-          log: "response_dependent['headers']['x-powered-by']"
+            content:
+              regex: <span id=\'footer-build-information\'>(.+?)</span>
+              reverse: false 
+          log: "response_dependent['content']"

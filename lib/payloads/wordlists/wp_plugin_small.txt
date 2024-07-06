@@ -123,6 +123,7 @@ mailz
 media-library-categories
 meenews
 mingle-forum
+miniorange-login-openid
 mm-forms-community
 myflash
 mystat
@@ -144,6 +145,7 @@ placester
 plugin-dir
 plugin-newsletter
 post-highlights
+post-smtp
 premium_gallery_manager
 pretty-link
 profiles
@@ -279,3 +281,5 @@ sucuri-scanner
 ninja-forms
 the-plus-addons-for-elementor-page-builder
 wp-seopress
+media-library-assistant
+forminator

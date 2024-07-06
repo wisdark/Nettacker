@@ -1,12 +1,11 @@
 info:
-  name: x_powered_by_vuln
+  name: http_html_title_scan
   author: OWASP Nettacker Team
   severity: 3
-  description:
+  description: HTTP HTML Title scan - extracts the TITLE tag which can help identify the application running on the server
   reference:
   profiles:
-    - vuln
-    - vulnerability
+    - scan
     - http
     - low_severity
 
@@ -17,11 +16,11 @@ payloads:
         timeout: 3
         headers:
           User-Agent: "{user_agent}"
-        allow_redirects: false
+        allow_redirects: true
         ssl: false
         url:
           nettacker_fuzzer:
-            input_format: "{{schema}}://{target}:{{ports}}/"
+            input_format: "{{schema}}://{target}:{{ports}}"
             prefix: ""
             suffix: ""
             interceptors:
@@ -34,9 +33,11 @@ payloads:
                 - 443
         response:
           condition_type: or
+          log: "response_dependent['status_code'] response_dependent['content']"
           conditions:
-            headers:
-              x-powered-by:
-                regex: "\\S+"
+            status_code:
+                regex: \d\d\d
                 reverse: false
-          log: "response_dependent['headers']['x-powered-by']"
+            content:
+                regex: <title>(.+?)</title> 
+                reverse: false

@@ -1,19 +1,19 @@
 info:
-  name: x_powered_by_vuln
+  name: ivanti_epmm_lastpatcheddate_scan
   author: OWASP Nettacker Team
   severity: 3
-  description:
+  description: Ivanti EPMM Last Patched Date Scan
   reference:
   profiles:
-    - vuln
-    - vulnerability
+    - scan
     - http
+    - ivanti
     - low_severity
 
 payloads:
   - library: http
     steps:
-      - method: get
+      - method: head
         timeout: 3
         headers:
           User-Agent: "{user_agent}"
@@ -21,7 +21,7 @@ payloads:
         ssl: false
         url:
           nettacker_fuzzer:
-            input_format: "{{schema}}://{target}:{{ports}}/"
+            input_format: "{{schema}}://{target}:{{ports}}/mifs/css/pages/userlogin.css"
             prefix: ""
             suffix: ""
             interceptors:
@@ -33,10 +33,16 @@ payloads:
                 - 80
                 - 443
         response:
-          condition_type: or
+          condition_type: and
+          log: "response_dependent['headers']['Last-Modified']"
           conditions:
+            status_code:
+              regex: "200"
+              reverse: false
             headers:
-              x-powered-by:
-                regex: "\\S+"
+              Last-Modified:
+                regex: .*  
                 reverse: false
-          log: "response_dependent['headers']['x-powered-by']"
+              Content-Type:
+                regex: "css"
+                reverse: false  

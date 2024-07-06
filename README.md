@@ -7,7 +7,7 @@ OWASP Nettacker
 [![repo size ](https://img.shields.io/github/repo-size/OWASP/Nettacker)](https://github.com/OWASP/Nettacker)
 
 
-<img src="https://raw.githubusercontent.com/zdresearch/OWASP-Nettacker/master/web/static/img/owasp-nettacker.png" width="200"><img src="https://raw.githubusercontent.com/zdresearch/OWASP-Nettacker/master/web/static/img/owasp.png" width="500">
+<img src="https://raw.githubusercontent.com/OWASP/Nettacker/master/web/static/img/owasp-nettacker.png" width="200"><img src="https://raw.githubusercontent.com/OWASP/Nettacker/master/web/static/img/owasp.png" width="500">
 
 
 **DISCLAIMER**
@@ -30,12 +30,13 @@ OWASP Nettacker project is created to automate information gathering, vulnerabil
 * How to use the Dockerfile: https://github.com/OWASP/Nettacker/wiki/Installation#docker
 * OpenHub: https://www.openhub.net/p/OWASP-Nettacker
 * **Donate**: https://owasp.org/donate/?reponame=www-project-nettacker&title=OWASP+Nettacker
+* **Read More**: https://www.secologist.com/open-source-projects
 
 ____________
 Quick Setup & Run
 ============
 ```bash
-$ docker-compose up -d && docker exec -it nettacker_nettacker_1 /bin/bash
+$ docker-compose up -d && docker exec -it nettacker-nettacker-1 /bin/bash
 # python nettacker.py -i owasp.org -s -m port_scan
 ```
 * Results are accessible from your (https://localhost:5000) or https://nettacker-api.z3r0d4y.com:5000/ (pointed to your localhost)
@@ -64,4 +65,10 @@ _____________
 
 
 <img src="https://betanews.com/wp-content/uploads/2016/03/vertical-GSoC-logo.jpg" width="200"></img>
+
+_____________
+## Stargazers over time
+
+[![Stargazers over time](https://starchart.cc/OWASP/Nettacker.svg)](https://starchart.cc/OWASP/Nettacker)
+
 
