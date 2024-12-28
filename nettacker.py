@@ -1,18 +1,6 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
+"""OWASP Nettacker application entry point."""
 
-from core.compatible import check_dependencies
+from nettacker.main import run
 
-"""
-entry point of OWASP Nettacker framework
-"""
-
-# __check_external_modules created to check requirements before load the engine
 if __name__ == "__main__":
-    check_dependencies()  # check for dependencies
-
-    # if dependencies and OS requirements are match then load the program
-    from core.parse import load
-
-    load()  # load and parse the ARGV
-    # sys.exit(main())
+    run()
